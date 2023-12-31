@@ -1,2 +1,8 @@
-﻿  test.c
+﻿  tictactoe.c
+D:\LangLn\C(107,14): warning C4098: “tictactoe_cop_move”:“void”函数返回值
+D:\LangLn\C(118,14): warning C4098: “tictactoe_cop_move”:“void”函数返回值
+D:\LangLn\C(145,13): warning C4098: “tictactoe_cop_move”:“void”函数返回值
+D:\LangLn\C(171,13): warning C4098: “tictactoe_cop_move”:“void”函数返回值
+D:\LangLn\C(180,11): warning C4098: “tictactoe_cop_move”:“void”函数返回值
+D:\LangLn\C(184,10): warning C4098: “tictactoe_cop_move”:“void”函数返回值
   Games.vcxproj -> D:\LangLn\C#++\Games\x64\Debug\Games.exe
