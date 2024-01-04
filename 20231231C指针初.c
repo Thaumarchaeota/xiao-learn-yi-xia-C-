@@ -20,13 +20,7 @@ int main()
 	int pa2 = pa + 1;	//当对指针进行加减运算时，其自动对应一个字符所占空间的大小
 	printf("%p\n", pa2);//如int* +1时会+4，而char* +1时仅会+1
 						// -> 指针类型决定指针的步长
-	int arr[10] = { 0 };
-	int* parr = &arr;
-	int i = 0;
-	for (i = 0; i < 10; i++)
-	{
-		*(parr + i) = 1;// *(数组指针 + i)即为访问下标为i的元素
-	}
+
 
 	return 0;
 }
@@ -116,9 +110,83 @@ int main()
 	return 0;
 }
 
-/*指针数组*/
+/*数组指针*/
 int main()
 {
-	int* arr[] = { 0 };//指针数组
+
+}
+
+
+/*指针与数组*/
+int main()
+{
+	//地址
+	int arr[10] = { 0 };	//数组首元素地址	->	首元素指针
+	printf("%p\n", arr);
+	printf("%p\n", arr + 1);	//步长为4(int)
+
+	int(*parr2)[10] = &arr;//	数组地址		->	数组指针
+	printf("%p\n", parr2);
+	printf("%p\n", parr2 + 1);	//步长为40
+
+	int a[] = { 1,2,3,4,5 };
+	int b[] = { 6,3,7,1,1 };
+	int c[] = { 4,9,2,7,3 };
+
+	//数组首元素与指针数组的使用
+	int* arr[] = { a, b, c };//此处为包含abc三个数组指针的指针数组
+	int i = 0; int j = 0;
+	for (i = 0; i < 3; i++)
+	{
+		for (j = 0; j < 5; j++)
+		{
+			printf("%d ", arr[i][j]);//arr[i]本身代表abc的数组首元素指针，可视为数组名
+		}
+		printf("\n");
+	}
 	return 0;
 }
+
+//数组指针的使用
+int main()
+{
+	int arr[10] = { 1,2,3,4,5,6,7,8,9,10 };
+	int(*parr)[10] = &arr;
+
+	
+	int i = 0;
+	for (i = 0; i < 10; i++)
+	{
+		printf("%d ", *((*parr) + i));
+		//parr为数组指针/数组地址，parr解引用得到*parr为数组，即arr，实际代表首元素地址，再+i并解引用得到数组元素
+	}
+	//不当写法
+
+	return 0;
+}
+
+//二维数组的指针
+void print_arr(int(*parr)[5], int row, int col)
+{
+	int i = 0; int j = 0;
+	for (i = 0; i < row; i++)
+	{
+		for (j = 0; j < col; j++)
+		{
+			printf("%d ", *(*(parr + i) + j));
+		}
+		printf("\n");
+	}
+}
+
+
+int main()
+{
+	int arr[3][5] = { 1,5,2,4,7,3,1,3,6,7,9,5,2,3,5 };
+	print_arr(arr, 3, 5);
+	return 0;
+}
+
+//int(*parr[10])[5]是一个十元素的指针数组，每个指针为指向拥有5个int型元素的数组指针
+
+//一维数组传参
